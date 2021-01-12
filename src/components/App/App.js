@@ -3,11 +3,13 @@ import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 
+const todoItem = 'Задача № ';
+
 const App = () => (<div>
   <h1>Список</h1>
   <InputItem />
-  <ItemList />
-  <Footer />
+  <ItemList todoItem={todoItem} />
+  <Footer count={5} />
 </div>
 );
 
