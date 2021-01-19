@@ -18,7 +18,7 @@ html, body {
   padding: 0;
 }
 
-.todo {
+.wrapper {
   padding: 0;
   margin: auto;
   width: 100%;
@@ -32,32 +32,10 @@ html, body {
   background-color: var(--color-bg);
 }
 
-.todo__title {
+.title {
   margin: 0;
   padding: calc(var(--pd) / 2);
   font-size: 2em;
   font-weight: 700;
   text-align: center;
-}
-
-.todo__input {
-  padding: var(--pd);
-}
-
-.todo__list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.todo__list li {
-  margin-bottom: -1px;
-  padding: var(--pd);
-  background-color: var(--color-item);
-  border-top: 1px solid var(--color-br);
-  border-bottom: 1px solid var(--color-br);
-}
-
-.todo__footer {
-  padding: var(--pd);
 }
