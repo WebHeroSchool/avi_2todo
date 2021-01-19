@@ -1,5 +1,4 @@
 import React from 'react';
-// import classnames from 'classnames';
 import styles from './Item.module.css';
 
 import ListItem from '@material-ui/core/ListItem';

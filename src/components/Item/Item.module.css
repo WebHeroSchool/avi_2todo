@@ -1,8 +1,3 @@
-.item {
-  display: block;
-  background-color: var(--color-item);
-}
-
 .done {
   display: block;
   text-decoration: line-through;
