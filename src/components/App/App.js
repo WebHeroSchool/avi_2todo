@@ -2,6 +2,7 @@ import React from 'react';
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
+import './App.css';
 
 
 const App = () => {
@@ -18,8 +19,8 @@ const App = () => {
     }
   ];
 
-  return (<div>
-    <h1>Список</h1>
+  return (<div className="todo">
+    <h1 className="todo__title">Список задач</h1>
     <InputItem />
     <ItemList items={items} />
     <Footer count={5} />
