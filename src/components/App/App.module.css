@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 :root {
   --pd: 1em;
-  --color-bg: rgba(0, 0, 0, 0.1);
+  --color-bg: rgba(0, 0, 0, 0.05);
   --color-item: rgba(255, 255, 255, 0.3);
   --color-br: var(--color-bg);
+  --box-sh: 0 4px 10px 4px rgb(0, 0, 0,  .16);
 }
 
 *,*::before,*::after {
@@ -30,6 +31,7 @@ html, body {
   line-height: normal;
 
   background-color: var(--color-bg);
+  box-shadow: var(--box-sh);
 }
 
 .title {
