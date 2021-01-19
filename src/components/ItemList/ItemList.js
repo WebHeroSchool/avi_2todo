@@ -1,6 +1,5 @@
 import React from 'react';
 import Item from '../Item/Item';
-import styles from './ItemList.module.css';
 
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -64,4 +63,3 @@ export default function ItemList( {items} ) {
     </List>
   );
 }
-
