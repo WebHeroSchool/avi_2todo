@@ -1,15 +1,9 @@
 .item {
   display: block;
-  margin-bottom: -1px;
-  padding: var(--pd);
   background-color: var(--color-item);
-  border-top: 1px solid var(--color-br);
-  border-bottom: 1px solid var(--color-br);
 }
 
 .done {
   display: block;
-  padding: var(--pd);
-  background-color: var(--color-bg);
   text-decoration: line-through;
 }
