@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemList( {items, onClickDone} ) {
+export default function ItemList( {items, onClickDone, onClickDelete} ) {
   const classes = useStyles();
 
  return (
@@ -23,7 +23,9 @@ export default function ItemList( {items, onClickDone} ) {
             value={item.value}
             isDone={item.isDone}
             id={item.id}
-            onClickDone={onClickDone} />
+            onClickDone={onClickDone}
+            onClickDelete={onClickDelete}
+          />
         );
       })}
     </List>
