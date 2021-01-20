@@ -9,8 +9,18 @@
 }
 
 .field label {
-  padding: 1em;
+  padding: 2em;
 }
 .field input {
-  padding: 1em;
+  padding: 1.5em 1em 1em;
+  text-transform: uppercase;
+}
+
+.btn {
+  display: block !important;
+  margin: 1em auto !important;
+}
+
+p {
+  padding-left: 2em;
 }
