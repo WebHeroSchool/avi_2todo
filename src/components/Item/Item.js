@@ -31,4 +31,8 @@ const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (
   </ListItem>
 );
 
+Item.defaultProps = {
+  value: 'Базовый текст задачи'
+}
+
 export default Item;
