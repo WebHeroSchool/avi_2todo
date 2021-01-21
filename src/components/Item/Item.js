@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Item.module.css';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -9,9 +8,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import styles from './Item.module.css';
+
 const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (
 
-  <ListItem fullWidth>
+  <ListItem fullWidth key={id}>
     <ListItemIcon>
       <Checkbox
         checked={isDone}
