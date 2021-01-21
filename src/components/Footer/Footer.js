@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from './Footer.module.css'
+import PropTypes from 'prop-types';
+import styles from './Footer.module.css';
 
 const Footer = ({ count }) => (<div className={styles.wrapper}>Осталось сделать: {count}</div>);
 
-Footer.defaultProps = {
-  count: 0
+Footer.propTypes = {
+  count: PropTypes.number.isRequired
 };
 
 export default Footer;

@@ -12,7 +12,7 @@ import styles from './Item.module.css';
 
 const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (
 
-  <ListItem fullWidth key={id}>
+  <ListItem key={id}>
     <ListItemIcon>
       <Checkbox
         checked={isDone}
@@ -30,9 +30,5 @@ const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (
     </ListItemSecondaryAction>
   </ListItem>
 );
-
-Item.defaultProps = {
-  value: 'Базовый текст задачи'
-}
 
 export default Item;
