@@ -7,16 +7,16 @@ import styles  from './App.module.css';
 class App extends React.Component {
   state = {
     items: [
-      {
-        value: 'Задача № 1',
-        isDone: false,
-        id: 1
-      },
-      {
-        value: 'Задача № 2',
-        isDone: false,
-        id: 2
-      },
+      // {
+      //   value: 'Задача № 1',
+      //   isDone: false,
+      //   id: 1
+      // },
+      // {
+      //   value: 'Задача № 2',
+      //   isDone: false,
+      //   id: 2
+      // },
       {
         value: 'Задача № 3',
         isDone: true,
@@ -55,14 +55,16 @@ class App extends React.Component {
   render() {
   
      return (<div className={styles.wrapper}>
-      <h1 className={styles.title}>Список задач</h1>
+       <h1 className={styles.title}>Список задач</h1>
+       
       <InputItem onClickAdd={this.onClickAdd} />
        <ItemList
          items={this.state.items}
          onClickDone={this.onClickDone}
          onClickDelete={this.onClickDelete}
        />
-      <Footer />
+      <Footer count={this.state.count} />
+       
     </div>
     );
   }

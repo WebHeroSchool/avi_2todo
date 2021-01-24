@@ -5,7 +5,6 @@ import Item from '../Item/Item';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
@@ -13,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemList( {items, onClickDone, onClickDelete} ) {
+export default function ItemList( {items, id, onClickDone, onClickDelete} ) {
   const classes = useStyles();
 
  return (
@@ -21,6 +20,7 @@ export default function ItemList( {items, onClickDone, onClickDelete} ) {
       {items.map((item) => {
         return (
           <Item
+            key={item.id}
             value={item.value}
             isDone={item.isDone}
             id={item.id}
