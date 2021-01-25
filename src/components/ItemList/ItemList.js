@@ -34,7 +34,6 @@ export default function ItemList( {items, id, onClickDone, onClickDelete} ) {
 }
 
 ItemList.propTypes = {
-  items: PropTypes.array.isRequired,
   onClickDone: PropTypes.func.isRequired,
   onClickDelete: PropTypes.func.isRequired
 };
