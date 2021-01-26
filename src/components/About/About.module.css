@@ -2,3 +2,58 @@
 .wrapper {
   padding: 1em;
 }
+
+.wrapper img {
+  max-width: 100%;
+  object-fit: contain;
+
+  border-radius: 50%;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  width: 30%;
+}
+
+.title {
+  margin: 0;
+  width: 65%;
+}
+
+.list {
+  padding: 10px;
+  padding-left: 30px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+.list li {
+  width: 47%;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-size: 12px;
+}
+
+.list a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #000000;
+  font-size: 12px;  
+}
+
+.list a:focus,
+.list a:hover {
+  opacity: 0.5;
+}
