@@ -24,7 +24,7 @@ html, body {
   margin: auto;
   margin-top: 5%;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
 
   display: flex;
   flex-wrap: wrap;
