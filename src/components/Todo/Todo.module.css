@@ -22,14 +22,8 @@ html, body {
 .wrapper {
   padding: 0;
   margin: auto;
-  margin-top: 5%;
   width: 100%;
   max-width: 400px;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
 
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -46,17 +40,4 @@ html, body {
   font-size: 2em;
   font-weight: 700;
   text-align: center;
-}
-
-.sidebar {
-  width: 28%;
-}
-
-.content {
-  width: 70%;
-}
-
-.link {
-  text-decoration: none;
-  color: #000000;
 }
