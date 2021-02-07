@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './InputItem.module.css';
-import Button from '@material-ui/core/Button';
+
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
 
 class InputItem extends React.Component {
@@ -52,22 +54,25 @@ class InputItem extends React.Component {
         <form
           onSubmit={event => event.preventDefault()}
           autoComplete="off"
+          className={styles.form}
         >
           <TextField
-            id="standard-dense"
-            label="Добавить задание"
-            margin="dense"
+            id="outlined-secondary"
+            label="Просто введите сюда название дела..."
+            
+            variant="outlined"
             value={this.state.inputValue}
             onChange={(event) => this.onChangeInputItem(event)}
             helperText={this.state.helperText}
             error={this.state.isError}
           />
-          <Button
+          <Fab
+            color="primary"
+            aria-label="add"
             variant='contained'
-            color='primary'
-            onClick={() => this.onButtonClick()}
-            className={styles.btn}
-          >Добавить</Button>
+            onClick={() => this.onButtonClick()}>
+            <AddIcon />
+          </Fab>
         </form>
       </div>
     );

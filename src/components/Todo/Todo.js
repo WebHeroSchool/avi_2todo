@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
-import Footer from '../Footer/Footer';
+
 import styles from './Todo.module.css';
+
+import addTaskPic from './img/addTask.svg';
 
 const Todo = () => {
   const initialState = {
@@ -29,13 +31,6 @@ const Todo = () => {
   const [todoItem, setTodoItem] = useState(initialState.items);
   const [count, setCount] = useState(initialState.count);
 
-  useEffect(() => {
-    console.log("update");
-  });
-
-  useEffect(() => {
-    console.log("mount");
-  }, []);
 
   const onClickDone = id => {
     const newItemList =  todoItem.map(item => {
@@ -68,16 +63,61 @@ const Todo = () => {
     setCount(count => count + 1);
   }
 
+  
+  const completedItems = todoItem.filter(item => item.isDone === true);
+  const uncompletedItems = todoItem.filter(item => item.isDone === false);
+
+  const onClickCompleted = () => {
+    const completedItems = todoItem.filter(item => item.isDone === true);
+    setTodoItem(completedItems);
+  }
+
+  const onClickUncompleted = () => {
+    const uncompletedItems = todoItem.filter(item => item.isDone === false);
+    setTodoItem(uncompletedItems);
+  }
+
   return (<div className={styles.wrapper}>
-      <h1 className={styles.title}>Список задач</h1>
+
+    <header className={styles.header}>
+      <h1 className={styles.title}>Список моих дел</h1>
+      <div className={styles.filters} >
+        <button
+          type="button"
+          className={styles.filterBtn}
+          onClick={onClickCompleted}
+          >
+          Завершенные 
+          <span>{completedItems.length}</span>
+        </button>
+        <button
+          type="button"
+          className={styles.filterBtn}
+          onClick={onClickUncompleted}
+        >
+          Незавершенные
+          <span>{uncompletedItems.length}</span>
+        </button>
+        <button
+          type="button"
+          className={styles.filterBtn}
+        >
+          Все
+        </button>
+      </div>
       
-    <InputItem onClickAdd={onClickAdd} />
-      <ItemList
+    </header>
+
+      
+    {(count === 0) ? <img className={styles.pic} src={addTaskPic} width="321" height="233" alt="нет дел" />
+      : <ItemList
         items={todoItem}
         onClickDone={onClickDone}
         onClickDelete={onClickDelete}
-      />
-    <Footer count={count} />
+    />
+    }
+    
+    <InputItem onClickAdd={onClickAdd} />
       
   </div>
   );
