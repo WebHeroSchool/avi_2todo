@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
+import Filters from '../Filters/Filters';
+import Footer from '../Footer/Footer';
 
 import styles from './Todo.module.css';
 
@@ -8,29 +10,31 @@ import addTaskPic from './img/addTask.svg';
 
 const Todo = () => {
   const initialState = {
-    count: 3,
-    items: [
+    count: 0,
+    items: [],
+    filterName: '',
+    filterItems: [
       {
-        value: 'Задача № 1',
-        isDone: false,
-        id: 1
+        id: 1,
+        value: "Завершенные",
+        isActive: false
       },
       {
-        value: 'Задача № 2',
-        isDone: false,
-        id: 2
+        id: 2,
+        value: "Незавершенные",
+        isActive: true
       },
       {
-        value: 'Задача № 3',
-        isDone: true,
-        id: 3
-      }
-    ]
+        id: 3,
+        value: "Все",
+        isActive: false
+      },
+    ],
   }
 
   const [todoItem, setTodoItem] = useState(initialState.items);
+  const [filterItem, setFilterItem] = useState(initialState.filterItems);
   const [count, setCount] = useState(initialState.count);
-
 
   const onClickDone = id => {
     const newItemList =  todoItem.map(item => {
@@ -63,62 +67,71 @@ const Todo = () => {
     setCount(count => count + 1);
   }
 
+  let sortlist = todoItem;
+  const onClickFilterList = (sortlist, filterName) => {
+
+    if (filterName === 'Завершенные') {
+      sortlist = todoItem.filter(item => item.isDone);
+    } else if (filterName === 'Незавершенные') {
+      sortlist = todoItem.filter(item => !item.isDone);
+    } else if (filterName === 'Все') {
+      sortlist = todoItem;
+    } else {
+      sortlist = todoItem;
+    }
+    console.log(sortlist, filterName);
+    return sortlist;
+  };
+
+
+  const onClickFilterActive = (id, sortlist, filterName) => {
+    const newFilterList = filterItem.map(item => {
+      const newFilter = { ...item };
+      if (item.id === id) {
+        newFilter.isActive = true;
+        filterName = item.value;
+
+        onClickFilterList(sortlist, filterName);
+        
+      } else {
+        newFilter.isActive = false;
+      }
+      return newFilter;
+    });
+
+    setFilterItem(newFilterList);
+  };
+
   
-  const completedItems = todoItem.filter(item => item.isDone === true);
-  const uncompletedItems = todoItem.filter(item => item.isDone === false);
-
-  const onClickCompleted = () => {
-    const completedItems = todoItem.filter(item => item.isDone === true);
-    setTodoItem(completedItems);
-  }
-
-  const onClickUncompleted = () => {
-    const uncompletedItems = todoItem.filter(item => item.isDone === false);
-    setTodoItem(uncompletedItems);
-  }
+  
 
   return (<div className={styles.wrapper}>
 
     <header className={styles.header}>
       <h1 className={styles.title}>Список моих дел</h1>
-      <div className={styles.filters} >
-        <button
-          type="button"
-          className={styles.filterBtn}
-          onClick={onClickCompleted}
-          >
-          Завершенные 
-          <span>{completedItems.length}</span>
-        </button>
-        <button
-          type="button"
-          className={styles.filterBtn}
-          onClick={onClickUncompleted}
-        >
-          Незавершенные
-          <span>{uncompletedItems.length}</span>
-        </button>
-        <button
-          type="button"
-          className={styles.filterBtn}
-        >
-          Все
-        </button>
-      </div>
-      
+
+      <Filters
+        filterItems={filterItem}
+        onClickFilterActive={onClickFilterActive}
+      />
+
     </header>
 
-      
     {(count === 0) ? <img className={styles.pic} src={addTaskPic} width="321" height="233" alt="нет дел" />
       : <ItemList
         items={todoItem}
         onClickDone={onClickDone}
         onClickDelete={onClickDelete}
+        sort={sortlist}
     />
     }
     
     <InputItem onClickAdd={onClickAdd} />
-      
+    
+   <Footer
+      activeTaskCount={todoItem.filter(item => !item.isDone).length}
+      noActiveTaskCount={todoItem.filter(item => item.isDone).length}
+    />
   </div>
   );
 }

@@ -36,9 +36,6 @@ class Item extends React.Component {
           root: isDone && styles.done
         }} />
         <ListItemSecondaryAction>
-          <Fab color="secondary" aria-label="edit" size="small">
-            <EditIcon />
-          </Fab>
           <IconButton aria-label="delete">
             <DeleteIcon onClick={() => onClickDelete(id)}/>
           </IconButton>

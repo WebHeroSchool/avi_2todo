@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Footer.module.css';
 
-const Footer = ({ count }) => (<div className={styles.wrapper}>Осталось сделать: {count}</div>);
+const Footer = ({ activeTaskCount, noActiveTaskCount }) => (
+  <div className={styles.wrapper}>
+    <p>Осталось сделать: {activeTaskCount}</p>
+    <p>Готово: {noActiveTaskCount}</p>
+  </div>);
 
 Footer.propTypes = {
   count: PropTypes.number.isRequired
