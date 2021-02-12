@@ -81,7 +81,7 @@ const Todo = () => {
       }
       return newFilter;
     });
-
+    
     setFilterName(filterName);
     setFilterItem(newFilterList);
   };
@@ -119,7 +119,7 @@ const Todo = () => {
     />
     }
     
-    <InputItem onClickAdd={onClickAdd} />
+    <InputItem onClickAdd={onClickAdd} items={todoItem} count={ count }/>
     
    <Footer
       activeTaskCount={todoItem.filter(item => !item.isDone).length}

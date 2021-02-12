@@ -5,38 +5,54 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
 
+
 class InputItem extends React.Component {
   state = {
     inputValue: '',
     helperText: '',
-    isError: false
+    isError: false,
+    isDouble: false
   };
 
   onChangeInputItem = (event) => {
 
     this.setState({
       inputValue: event.target.value,
-      isError: (this.state.isError && this.valueCheck(this.state.inputValue)),
-      helperText: !(this.state.isError && this.valueCheck(this.state.inputValue) ? '' : 'Введите текст')
+      isError: (
+        this.state.isError && this.valueCheck(this.state.inputValue)
+      ),
+      helperText: !(this.state.isError &&
+        this.valueCheck(this.state.inputValue) ? '' : 'Введите текст'
+      )
     })
   };
 
-  valueCheck = (value) => {
-    if (value === '') {
-      return false;
-    } else {
-      return true;
-    }
+  valueCheck = (value, isDouble) => {
+
+    this.props.items.forEach(item => {
+      console.log(item.value, value);
+        if (item.value === value) {
+          isDouble = true;
+        } else {
+          isDouble = false;
+        }
+    });
+    
+    if (isDouble || value === '') {
+        return false;
+      } else {
+        return true;
+      }
   };
+
 
   onButtonClick = () => {
 
-    if (!this.valueCheck(this.state.inputValue)) {
+    if (!this.valueCheck(this.state.inputValue, this.state.isDouble)) {
       this.setState({
-          helperText: 'Введите текст',
-          isError: true
+        helperText: 'Введите текст',
+        isError: true
       });
-      
     } else {
       this.setState({
         inputValue: ''
@@ -48,7 +64,7 @@ class InputItem extends React.Component {
   }
 
   render() {
-
+    
     return (
       <div className={styles.field}>
         <form
