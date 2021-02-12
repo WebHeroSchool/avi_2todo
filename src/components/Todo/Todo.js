@@ -12,6 +12,7 @@ const Todo = () => {
   const initialState = {
     count: 0,
     items: [],
+    sortList: [],
     filterName: '',
     filterItems: [
       {
@@ -22,12 +23,12 @@ const Todo = () => {
       {
         id: 2,
         value: "Незавершенные",
-        isActive: true
+        isActive: false
       },
       {
         id: 3,
         value: "Все",
-        isActive: false
+        isActive: true
       },
     ],
   }
@@ -35,6 +36,7 @@ const Todo = () => {
   const [todoItem, setTodoItem] = useState(initialState.items);
   const [filterItem, setFilterItem] = useState(initialState.filterItems);
   const [count, setCount] = useState(initialState.count);
+  const [filterName, setFilterName] = useState(initialState.filterName);
 
   const onClickDone = id => {
     const newItemList =  todoItem.map(item => {
@@ -67,43 +69,35 @@ const Todo = () => {
     setCount(count => count + 1);
   }
 
-  let sortlist = todoItem;
-  const onClickFilterList = (sortlist, filterName) => {
+  const onClickFilterActive = (id, filterName) => {
 
-    if (filterName === 'Завершенные') {
-      sortlist = todoItem.filter(item => item.isDone);
-    } else if (filterName === 'Незавершенные') {
-      sortlist = todoItem.filter(item => !item.isDone);
-    } else if (filterName === 'Все') {
-      sortlist = todoItem;
-    } else {
-      sortlist = todoItem;
-    }
-    console.log(sortlist, filterName);
-    return sortlist;
-  };
-
-
-  const onClickFilterActive = (id, sortlist, filterName) => {
     const newFilterList = filterItem.map(item => {
       const newFilter = { ...item };
       if (item.id === id) {
         newFilter.isActive = true;
         filterName = item.value;
-
-        onClickFilterList(sortlist, filterName);
-        
       } else {
         newFilter.isActive = false;
       }
       return newFilter;
     });
 
+    setFilterName(filterName);
     setFilterItem(newFilterList);
   };
 
-  
-  
+
+  let sortlist;
+
+  if (filterName === 'Завершенные') {
+  sortlist = todoItem.filter(item => item.isDone);
+  } else if (filterName === 'Незавершенные') {
+  sortlist = todoItem.filter(item => !item.isDone);
+  } else if (filterName === 'Все') {
+  sortlist = todoItem;
+  } else {
+  sortlist = todoItem;
+  }
 
   return (<div className={styles.wrapper}>
 
@@ -119,10 +113,9 @@ const Todo = () => {
 
     {(count === 0) ? <img className={styles.pic} src={addTaskPic} width="321" height="233" alt="нет дел" />
       : <ItemList
-        items={todoItem}
+        items={sortlist}
         onClickDone={onClickDone}
         onClickDelete={onClickDelete}
-        sort={sortlist}
     />
     }
     

@@ -13,12 +13,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ItemList({
-  items, id, onClickDone, onClickDelete, sort }) {
+  items, id, onClickDone, onClickDelete }) {
   const classes = useStyles();
 
  return (
     <List className={classes.root}>
-      {sort.map((item) => {
+      {items.map((item) => {
         return (
           <Item
             key={item.id}

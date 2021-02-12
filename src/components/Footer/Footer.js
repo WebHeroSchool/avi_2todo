@@ -9,7 +9,8 @@ const Footer = ({ activeTaskCount, noActiveTaskCount }) => (
   </div>);
 
 Footer.propTypes = {
-  count: PropTypes.number.isRequired
+  activeTaskCount: PropTypes.number.isRequired,
+  noActiveTaskCount: PropTypes.number.isRequired
 };
 
 export default Footer;
