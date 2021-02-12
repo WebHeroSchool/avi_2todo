@@ -30,7 +30,7 @@ class InputItem extends React.Component {
   valueCheck = (value, isDouble) => {
 
     this.props.items.forEach(item => {
-      console.log(item.value, value);
+
         if (item.value === value) {
           isDouble = true;
         } else {
