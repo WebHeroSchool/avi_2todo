@@ -3,9 +3,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Pagination from '@material-ui/lab/Pagination';
 import Contacts from '../Contacts/Contacts';
+import ErrorBlock from '../ErrorBlock/ErrorBlock';
 import { Octokit } from '@octokit/rest';
 
 import styles from './About.module.css';
+import star from './img/star.svg';
+
 
 const octokit = new Octokit();
 
@@ -81,7 +84,8 @@ class About extends React.Component {
       <CardContent className={styles.wrapper}>
 
         <div className={styles.header}>
-          <img className={styles.avatar} src={avatarUser} alt={nameUser} />
+          {isLoading ? <CircularProgress /> : <img className={styles.avatar} src={avatarUser} alt={nameUser} />}
+          
           <div className={styles.info}>
             <h1 className={styles.title}>{isError ? error : 'Анна'} </h1>
             <Contacts />
@@ -90,27 +94,38 @@ class About extends React.Component {
       
         <h2>{isLoading ? <CircularProgress /> : "Репозитории на github.com"}</h2>
         {!isLoading && <ul className={styles.list}>
-          {isError ? error : repoPageList.map(repo => (
-            <li key={repo.id} className={styles.itemList}>
-              <a href={repo.html_url} className={styles.linkList}>
-                <h3>{repo.name}</h3>
-                <div className={styles.infoRepo}>
-                  <span>{repo.description}</span>
-                  <span>{repo.language}</span>
-                </div>
-              </a>
-            </li>)
-          )}
-        </ul>}
-        <Pagination
-            className={styles.pagination}
-            count={countPages}
-            variant="outlined"
-            color="secondary"
-            onChange={this.onChangePagination.bind(this)}
-        />
+          {isError ? 
+            <ErrorBlock /> :
+              repoPageList.map(repo => (
+              <li key={repo.id} className={styles.itemList}>
+                <a href={repo.html_url} className={styles.linkList}>
+                  <h3>{repo.name}</h3>
+                  <div className={styles.infoRepo}>
+                    <div className={styles.infoRepoItem}>{repo.description} </div>
+                    <div className={styles.infoRepoItem}>
+                      <span className={styles.icon}></span>
+                      {repo.language}
+                    </div>
+                    <div className={styles.infoRepoItem}>
+                      <img className={styles.iconStar} src={star} width="10" height="10" alt="icon star" />
+                      <span> {repo.stargazers_count}</span>
+                    </div>
+                  </div>
+                </a>
+              </li>)
+            )}
+          </ul>}
+          <Pagination className={styles.pagination}
+              count={countPages}
+              variant="outlined"
+              color="secondary"
+              onChange={this.onChangePagination.bind(this)} />
+            
+        
+          
         
       </CardContent>
+       
     )
   }
 }

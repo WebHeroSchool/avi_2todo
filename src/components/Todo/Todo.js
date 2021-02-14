@@ -3,10 +3,9 @@ import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Filters from '../Filters/Filters';
 import Footer from '../Footer/Footer';
+import ErrorBlock from '../ErrorBlock/ErrorBlock';
 
 import styles from './Todo.module.css';
-
-import addTaskPic from './img/addTask.svg';
 
 const Todo = () => {
   const initialState = {
@@ -111,7 +110,8 @@ const Todo = () => {
 
     </header>
 
-    {(count === 0) ? <img className={styles.pic} src={addTaskPic} width="321" height="233" alt="нет дел" />
+    {(count === 0) ?
+      <ErrorBlock />
       : <ItemList
         items={sortlist}
         onClickDone={onClickDone}

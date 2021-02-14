@@ -19,7 +19,7 @@ class InputItem extends React.Component {
     this.setState({
       inputValue: event.target.value,
       isError: (
-        this.state.isError && this.valueCheck(this.state.inputValue)
+        this.state.isError && this.valueCheck(this.state.inputValue) && this.valueCheckDouble(this.state.isDouble)
       ),
       helperText: !(this.state.isError &&
         this.valueCheck(this.state.inputValue) ? '' : 'Введите текст'
@@ -27,18 +27,32 @@ class InputItem extends React.Component {
     })
   };
 
-  valueCheck = (value, isDouble) => {
-
-    this.props.items.forEach(item => {
-
-        if (item.value === value) {
-          isDouble = true;
-        } else {
-          isDouble = false;
-        }
-    });
+  valueCheck = (value) => {
     
-    if (isDouble || value === '') {
+    if (value === '') {
+        return false;
+      } else {
+        return true;
+      }
+  };
+
+  valueCheckDouble = (value) => {
+
+    let result;
+
+    if (this.props.items.length === 0) return true;
+
+    this.props.items.find(item => {
+      
+      if (item.value === value) {
+        result = true;
+      } else {
+        result = false;
+      }
+      return result;
+    });
+
+    if (result) {
         return false;
       } else {
         return true;
@@ -47,10 +61,15 @@ class InputItem extends React.Component {
 
 
   onButtonClick = () => {
-
-    if (!this.valueCheck(this.state.inputValue, this.state.isDouble)) {
+    
+    if (!this.valueCheck(this.state.inputValue)) {
       this.setState({
         helperText: 'Введите текст',
+        isError: true
+      });
+    } else if (!this.valueCheckDouble(this.state.inputValue)) {
+      this.setState({
+        helperText: 'Введите другой текст',
         isError: true
       });
     } else {
@@ -83,9 +102,9 @@ class InputItem extends React.Component {
             error={this.state.isError}
           />
           <Fab
+            className={styles.fabBtn}
             color="primary"
             aria-label="add"
-            variant='contained'
             onClick={() => this.onButtonClick()}>
             <AddIcon />
           </Fab>

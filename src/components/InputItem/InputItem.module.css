@@ -27,7 +27,6 @@
 }
 .form input {
   width: 100%;
-  /* padding: 10px 14px; */
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -35,4 +34,7 @@
   color: #cccccc;
 }
 
-
+.fabBtn {
+  background-color: #356eff;
+  color: #ffffff;
+}
