@@ -68,25 +68,25 @@ const Todo = () => {
     setCount(count => count + 1);
   }
 
-  const onClickFilterActive = (id, filterName) => {
+  const onClickFilterActive = (id) => {
 
     const newFilterList = filterItem.map(item => {
       const newFilter = { ...item };
       if (item.id === id) {
         newFilter.isActive = true;
-        filterName = item.value;
+
+        setFilterName(item.value);
       } else {
         newFilter.isActive = false;
       }
       return newFilter;
     });
-    
-    setFilterName(filterName);
+
     setFilterItem(newFilterList);
   };
 
 
-  let sortlist;
+  let sortlist = [ ...todoItem];
 
   if (filterName === 'Завершенные') {
   sortlist = todoItem.filter(item => item.isDone);
