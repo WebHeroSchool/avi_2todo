@@ -88,14 +88,19 @@
 }
 
 .infoRepoItem {
-  padding-right: 10px;
+  position: relative;
+  padding: 0 10px 0 15px;
 }
 
 .icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   border: 1px solid #999999;
+  transform: translateY(-50%);
 }
 
 @media (max-width: 500px) {

@@ -18,7 +18,7 @@ const ErrorBlock = () => (
       <div className={styles.text}>
         <h2>Что-то пошло не так...</h2>
         <p>Попробуйте 
-            <a href='' onClick={() => window.location.reload()}> загрузить </a> 
+            <button className={styles.btnLink} onClick={() => window.location.reload()}> загрузить </button> 
         еще раз</p>
       </div>
     }
