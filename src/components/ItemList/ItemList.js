@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemList( {items, id, onClickDone, onClickDelete} ) {
+export default function ItemList({
+  items, id, onClickDone, onClickDelete }) {
   const classes = useStyles();
 
  return (

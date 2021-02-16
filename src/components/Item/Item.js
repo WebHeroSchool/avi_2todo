@@ -5,7 +5,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@material-ui/icons/Cancel';
+
 
 import styles from './Item.module.css';
 
@@ -23,7 +24,7 @@ class Item extends React.Component {
     const { value, isDone, onClickDone, id, onClickDelete } = this.props;
 
     return (
-      <ListItem>
+      <ListItem className={styles.itemList}>
         <Checkbox
           checked={isDone}
           tabIndex={-1}

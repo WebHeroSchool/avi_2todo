@@ -23,21 +23,59 @@ html, body {
   padding: 0;
   margin: auto;
   width: 100%;
-  max-width: 400px;
 
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: normal;
 
-  background-color: var(--color-bg);
-  box-shadow: var(--box-sh);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--pd);
 }
 
 .title {
   margin: 0;
-  padding: calc(var(--pd) / 2);
+  
   font-size: 2em;
   font-weight: 700;
-  text-align: center;
+}
+
+.filterBtn {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.filterBtn:not(:last-child) {
+  margin-right: 16px;
+}
+
+.filterBtn span {
+  display: inline-block;
+  padding-left: 5px;
+  color: #356eff;
+}
+
+.pic {
+  display: block;
+  margin: 0 auto;
+  padding: 3em 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 650px) {
+  .header {
+    justify-content: center;
+  }
 }

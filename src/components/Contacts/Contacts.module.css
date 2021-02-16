@@ -1,4 +1,38 @@
 
 .wrapper {
-  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.info ul {
+  margin-left: auto;
+}
+
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #999999;
+  transition: 1s;
+}
+
+.link:focus,
+.link:hover {
+  opacity: 0.5;
+  transition: 1s;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }

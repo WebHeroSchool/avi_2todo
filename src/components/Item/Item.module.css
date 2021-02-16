@@ -2,3 +2,16 @@
   display: block;
   text-decoration: line-through;
 }
+
+.itemList {
+  margin-bottom: 20px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+
+  border: 1px solid #CCCCCC;
+  box-sizing: border-box;
+  border-radius: 41px;
+}
