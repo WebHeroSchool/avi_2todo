@@ -52,7 +52,7 @@ const Todo = () => {
   const onClickDelete = id => {
     const newItems = todoItem.filter(item => item.id !== id);
     setTodoItem(newItems);
-    setCount(count => count - 1);
+    setCount(count => count);
   }
 
   const onClickAdd = value => {
